@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand cricket</title>
+    <link rel="icon" type="image/jpg" href="bg.jpg">
+    <style>
+    body {
+        font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;   
+  color: white  
+    }
+    .ft1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+   }
+   input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bt1 {
+    border: none;
+    width: 120px;
+    height: 40px;
+    border-radius: 15px;
+    font-weight: 900;
+}
+.bt1:hover {
+    filter: brightness(80%);
+}
+    </style>
+</head>
+<body>
+<!--Made by sarthak-->
+    <img src="bg.jpg" style="position: fixed;top: 0;left: 0;z-index: -1;width: 100%;height: 100vh;filter: brightness(80%);">
+    <!--xxxxxxxxxxxxxxxxxxxxxxx-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap" rel="stylesheet">
+    <!--xxxxxxxxxxxxxxxxxxxxxxx-->
+<div style="display: flex;justify-content: center;align-items: center;width: 100%;" id="starts">
+<div style="display: block;width: 100%;">
+    <p style="text-align: center;font-size: 40px;font-weight: 900;">HAND CRICKET</p>
+    <div style="display: flex;width: 100%;justify-content: center;"><a>Type:</a>&nbsp;
+    <form>
+    <select name="gtype">
+        <option value="crazy">Crazy</option>
+        <option value="normal" disabled>Normal(coming soon)</option>
+    </select>
+    </form>
+    </div>
+    <br>
+    <div style="width: 100%;display: flex;justify-content: center;">
+    <button class="ft1 bt1" onclick="toss()">Start Match</button>
+    </div>
+</div>
+</div>
+<div style="display: none;justify-content: center;width: 100%;" id="tosss">
+     <div style="width: 100%;display: block;">
+          <p style="text-align: center;font-size: 40px;font-weight: 900;">Toss:</p>
+          <div style="width: 100%;display: flex;justify-content: center;" id="tossbox">
+              <input type="radio" name="toss" id="head"><a>Head</a>&nbsp;<input type="radio" name="toss" id="tails"><a>Tails</a>
+          </div>
+          <div style="width: 100%;display: none;justify-content: center;" id="tresult"><a style="font-size: 20px;font-weight: 900;" id="tresultt">Toss</a></div>
+          <br><div style="display: flex;width: 100%;justify-content: center;" id="tossb"><button class="bt1 ft1" onclick="toss1()">Toss!!</button></div>
+     </div>
+</div>
+<div style="display: none;justify-content: center;width: 100%;" id="pbatscreen">
+    <div style="width: 100%;display: block;">
+     <p style="text-align: center;font-size: 40px;font-weight: 900;">You are batting now</p>
+     <div style="display: flex;width: 100%;justify-content: center;"><a id="pcr"></a></div><br>
+     <div style="display: flex;width: 100%;justify-content: center;" id="pbscore">Your batting score:</div><br>
+     <div style="width:100%;display: flex;justify-content: center;"><a>No:</a>&nbsp;<input type="number" placeholder="Any no(from 1 to 10)" id="batno" value="">&nbsp;<button onclick="bat()">Bat!!</button></div>
+    </div>
+</div>
+<div style="display: none;justify-content: center;width: 100%;" id="pbalscreen">
+    <div style="width: 100%;display: block;">
+     <p style="text-align: center;font-size: 40px;font-weight: 900;">You are bowling now</p>
+     <div style="display: flex;width: 100%;justify-content: center;"><a id="bcr"></a></div><br>
+     <div style="display: flex;width: 100%;justify-content: center;" id="bbscore">Bot's batting score:</div><br>
+     <div style="width:100%;display: flex;justify-content: center;"><a>No:</a>&nbsp;<input type="number" placeholder="Any no(from 1 to 10)" id="balno" value="">&nbsp;<button onclick="bowl()">Bowl!!</button></div>
+    </div>
+</div>
+<p style="text-align: center;font-size: 50px;font-weight: 900;display: none;" id="who?"></p>
+    <script>
+        const cheer = new Audio('cheer.mp3')
+        cheer.volume = 1
+        const stadium = new Audio('stadium.mp3')
+        //Run counter
+        var pr = 0;
+        var br = 0;
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        //Toss variables(WARNING!=Don't touch this,this will mess up the toss)
+        var tosse = 0;
+        var tr = "";
+        var tosse2 = 0;
+        var bt = 0;
+        var pbob1 = 0;
+        var bbob1 = 0;
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        //Bat1(player batting)
+        var pbt = 0;
+        var bbo = 0;
+        var ball_no = 0;
+        var pot = 0;
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        //Chase run
+        var crc = 0
+        var cr = 0
+        //
+        //Bat2(bot batting)
+        var pbl = 0;
+        var bbt = 0;
+        var ball_no = 0;
+        var pot = 0;
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+       function toss() {
+        document.getElementById("starts").style.display = "none";
+        starttoss()
+       }    
+       function starttoss() {
+        stadium.play()
+        stadium.loop = true;
+        document.getElementById("tosss").style.display = "flex";
+       }
+       function toss1() {
+           if(document.getElementById("head").checked === true) {
+            tosse = 1
+            checktoss()
+           }
+           else if(document.getElementById("tails").checked === true) {
+            tosse = 2
+            checktoss()
+           }
+           else {
+            tosse = 0
+            alert("Choose your choice first")
+           }
+       }
+       function checktoss() {
+        tosse2 = Math.floor(Math.random() * 2) + 1;
+        if(tosse2 === 1) {
+          bt = "Heads"
+        }
+        else {
+            bt = "Tails"
+        }
+         if(tosse === 1) {
+            tr = "Heads"
+         }
+         else {
+            tr = "Tails"
+         }
+        if(tr === bt) {
+            playerwontoss();
+        }
+        else {
+            botwontoss();
+        }
+       }
+       function playerwontoss() {
+        document.getElementById("tossb").style.display = "none";
+        document.getElementById("tossbox").style.display = "none";
+        document.getElementById("tresult").style.display = "flex";
+        document.getElementById("tresultt").innerHTML = "Player won the toss!!"
+        pbob()
+       }
+       function botwontoss() {
+        document.getElementById("tossb").style.display = "none";
+        document.getElementById("tossbox").style.display = "none";
+        document.getElementById("tresult").style.display = "flex";
+        document.getElementById("tresultt").innerHTML = "Bot won the toss!!"
+        bbob()
+       }
+       function pbob() {
+         pbob1 = prompt("Bat(1) or Ball(2) choose:")
+         pbob1 = parseInt(pbob1)
+         if(pbob1 === 1) {
+            document.getElementById("tresultt").innerHTML = "Player will bat first";
+            setTimeout(bat1 , 3000)
+         }
+         else if(pbob1 === 2) {
+           document.getElementById("tresultt").innerHTML = "Player will bowl first";
+           setTimeout(bat2, 3000)
+         }
+         else {
+            alert("Wrong answer!!!")
+            pbob()
+         }
+       }
+       function bbob() {
+        bbob1 = Math.floor(Math.random() * 2) + 1;
+        if(bbob1 === 1) {
+            document.getElementById("tresultt").innerHTML = "Bot will bat first";
+            setTimeout(bat2, 3000)
+         }
+         else {
+           document.getElementById("tresultt").innerHTML = "Bot will bowl first";
+           setTimeout(bat1 , 3000)
+         }
+       }
+       function bat1() {
+        if(crc === 1) {
+            document.getElementById("pcr").display = "flex";
+            document.getElementById("pcr").innerHTML = "You need " + cr + " to win"
+        }
+        document.getElementById("tosss").style.display = "none";
+        document.getElementById("pbatscreen").style.display = "flex"
+       }
+       function bat2() {
+        if(crc === 1) {
+            document.getElementById("bcr").display = "flex";
+            document.getElementById("bcr").innerHTML = "Bot need "+ cr + " to win"
+        }
+        document.getElementById("tosss").style.display = "none";
+                document.getElementById("pbalscreen").style.display = "flex"
+       }
+       function bat() {
+        pbt = document.getElementById("batno").value;
+        pbt = parseInt(pbt)
+        if(pbt > 10 || pbt === "") {
+            alert("Wrong format")
+        }
+        else {
+            checkbat()
+        }
+       }
+       function checkbat() {
+        bbo = Math.floor(Math.random() * 10) + 0;
+        alert(bbo)
+        if(pbt === 10 && bbo ===0 ) {pbtout()}
+        else if(pbt + 1 === bbo || pbt - 1 === bbo){pbtout()}
+        else if(pbt === bbo) {pbtmul()}
+        else{pbtnr()} 
+       }
+       function pbtnr() {
+        ball_no += 1
+        pr = pr + parseInt(pbt)
+        document.getElementById("pbscore").innerHTML = "Your batting score: " + pr
+        checkbt()
+        if(crc === 1) {
+            document.getElementById("pcr").display = "flex";
+            document.getElementById("pcr").innerHTML = "You need " + (cr-pr) + " to win"
+        }
+       }
+       function pbtmul() {
+        cheer.play()
+        ball_no += 1
+        pr = pr + parseInt(pbt * pbt)
+        document.getElementById("pbscore").innerHTML = "Your batting score: " + pr
+        checkbt()
+        if(crc === 1) {
+            document.getElementById("pcr").display = "flex";
+            document.getElementById("pcr").innerHTML = "You need " + (cr-pr) + " to win"
+        }
+       }
+       function pbtout() {
+        cheer.play()
+        alert("You got out at " + pr)
+        document.getElementById("pbatscreen").style.display = "none";
+        summary1();
+       }
+       function bowl() {
+        pbl = document.getElementById("balno").value;
+        pbl = parseInt(pbl)
+        if(pbl > 10 || pbl === "") {
+            alert("Wrong format")
+        }
+        else {
+            checkbowl()
+        }
+       }
+       function checkbowl() {
+        bbt = Math.floor(Math.random() * 10) + 1;
+        alert(bbt)
+        if(pbl === 10 && bbt ===0 ) {bbtout()}
+        else if(bbt + 1 === pbl || bbt - 1 === pbl){bbtout()}
+        else if(pbl === bbt) {bbtmul()}
+        else{bbtnr()} 
+       }
+       function bbtnr() {
+        ball_no += 1
+        br = br + parseInt(bbt)
+        document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br
+        checkbl()
+        if(crc === 1) {
+            document.getElementById("bcr").display = "flex";
+            document.getElementById("bcr").innerHTML = "Bot need " + (cr-br) + " to win"
+        }
+       }
+       function bbtmul() {
+        cheer.play()
+        ball_no += 1
+        br = br + parseInt(bbt * bbt)
+        document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br
+        checkbl()
+        if(crc === 1) {
+            document.getElementById("bcr").display = "flex";
+            document.getElementById("bcr").innerHTML = "Bot need " + (cr-br) + " to win"
+        }
+       }
+       function bbtout() {
+        cheer.play()
+        alert("Bot got out at " + br)
+        document.getElementById("pbalscreen").style.display = "none";
+        summary2();
+       }
+       function summary1() {
+        if(crc === 1) {
+                botwon()
+        }
+        if(crc === 0) {
+           cr = pr + 1
+           crc = 1
+           bat2()
+        }
+    }
+        function checkbt() {
+            if(crc === 1 ) {
+                if(cr === pr || cr < pr) {
+                    playerwon()
+                }
+            }
+        }
+       function checkbl() {
+            if(crc === 1 ) {
+                if(cr === br || cr < br) {
+                    botwon()
+                }
+            }
+        }
+       function summary2() {
+        if(crc === 1) {
+                playerwon()
+            }
+        if(crc === 0) {
+           cr = br + 1
+           crc = 1
+           bat1()
+        }
+       }
+       function playerwon() {
+           alert("Player won")
+           document.getElementById("who?").style.display = "flex"
+           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"
+           cheer.play()
+           stadium.pause()
+           document.getElementById("pbalscreen").style.display = "none";
+           document.getElementById("pbatscreen").style.display = "none";
+       }
+       function botwon() {
+           alert("Bot won")
+                      document.getElementById("who?").style.display = "flex"
+           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭"
+           cheer.play()
+           stadium.pause()
+           document.getElementById("pbalscreen").style.display = "none";
+           document.getElementById("pbatscreen").style.display = "none";
+       }
+    </script>
+</body>
+</html>
