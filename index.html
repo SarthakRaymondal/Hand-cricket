@@ -234,6 +234,7 @@ input::-webkit-inner-spin-button {
         bbo = Math.floor(Math.random() * 10) + 0;
         alert(bbo)
         if(pbt === 10 && bbo ===0 ) {pbtout()}
+        else if(pbt === 0 && bbo === 10 ) {pbtout()}
         else if(pbt + 1 === bbo || pbt - 1 === bbo){pbtout()}
         else if(pbt === bbo) {pbtmul()}
         else{pbtnr()} 
@@ -279,6 +280,7 @@ input::-webkit-inner-spin-button {
         bbt = Math.floor(Math.random() * 10) + 1;
         alert(bbt)
         if(pbl === 10 && bbt ===0 ) {bbtout()}
+        else if(pbl === 0 && bbt === 10 ) {bbtout()}
         else if(bbt + 1 === pbl || bbt - 1 === pbl){bbtout()}
         else if(pbl === bbt) {bbtmul()}
         else{bbtnr()} 
@@ -347,7 +349,7 @@ input::-webkit-inner-spin-button {
        function playerwon() {
            alert("Player won")
            document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"
+           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"+ "<br>" + "You made:" + br + " runs"
            cheer.play()
            stadium.pause()
            document.getElementById("pbalscreen").style.display = "none";
@@ -356,8 +358,8 @@ input::-webkit-inner-spin-button {
        function botwon() {
            alert("Bot won")
                       document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭"
-           cheer.play()
+           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." + "<br>" + "Bot made:" + br + " runs"
+            cheer.play()
            stadium.pause()
            document.getElementById("pbalscreen").style.display = "none";
            document.getElementById("pbatscreen").style.display = "none";
