@@ -225,7 +225,7 @@ input::-webkit-inner-spin-button {
        function bat() {
         pbt = document.getElementById("batno").value;
         pbt = parseInt(pbt)
-        if(pbt > 10 || pbt === "") {
+        if(pbt > 10 || pbt === NaN) {
             alert("Wrong format")
         }
         else {
@@ -272,7 +272,7 @@ input::-webkit-inner-spin-button {
        function bowl() {
         pbl = document.getElementById("balno").value;
         pbl = parseInt(pbl)
-        if(pbl > 10 || pbl === "") {
+        if(pbl > 10 || pbl === NaN) {
             alert("Wrong format")
         }
         else {
