@@ -349,7 +349,8 @@ input::-webkit-inner-spin-button {
        function playerwon() {
            alert("Player won")
            document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"+ "<br>" + "You made:" + br + " runs"
+           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"+ "<br>" + "You made:" + pr + " runs"+"<br>" + "Bot made:" + br + " runs"
+           cheer.play()
            cheer.play()
            stadium.pause()
            document.getElementById("pbalscreen").style.display = "none";
@@ -358,7 +359,8 @@ input::-webkit-inner-spin-button {
        function botwon() {
            alert("Bot won")
                       document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." + "<br>" + "Bot made:" + br + " runs"
+           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." + "<br>" + "Bot made:" + br + " runs"+"<br>" + "You made:" + pr + " runs"
+           cheer.play()
             cheer.play()
            stadium.pause()
            document.getElementById("pbalscreen").style.display = "none";
