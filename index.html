@@ -106,7 +106,7 @@ input::-webkit-inner-spin-button {
         //Bat1(player batting)
         var pbt = 0;
         var bbo = 0;
-        var ball_no = 0;
+        var ball_no1 = 0;
         var pot = 0;
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         //Chase run
@@ -116,7 +116,7 @@ input::-webkit-inner-spin-button {
         //Bat2(bot batting)
         var pbl = 0;
         var bbt = 0;
-        var ball_no = 0;
+        var ball_no2 = 0;
         var pot = 0;
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
        function toss() {
@@ -240,9 +240,9 @@ input::-webkit-inner-spin-button {
         else{pbtnr()} 
        }
        function pbtnr() {
-        ball_no += 1
+        ball_no1 += 1
         pr = pr + parseInt(pbt)
-        document.getElementById("pbscore").innerHTML = "Your batting score: " + pr
+        document.getElementById("pbscore").innerHTML = "Your batting score: " + pr + "(" +ball_no1+ ")"
         checkbt()
         if(crc === 1) {
             document.getElementById("pcr").display = "flex";
@@ -251,7 +251,7 @@ input::-webkit-inner-spin-button {
        }
        function pbtmul() {
         cheer.play()
-        ball_no += 1
+        ball_no1 += 1
         pr = pr + parseInt(pbt * pbt)
         document.getElementById("pbscore").innerHTML = "Your batting score: " + pr
         checkbt()
@@ -261,6 +261,7 @@ input::-webkit-inner-spin-button {
         }
        }
        function pbtout() {
+        ball_no1 += 1
         cheer.play()
         alert("You got out at " + pr)
         document.getElementById("pbatscreen").style.display = "none";
@@ -286,9 +287,9 @@ input::-webkit-inner-spin-button {
         else{bbtnr()} 
        }
        function bbtnr() {
-        ball_no += 1
+        ball_no2 += 1
         br = br + parseInt(bbt)
-        document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br
+        document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br+ "(" +ball_no2+ ")"
         checkbl()
         if(crc === 1) {
             document.getElementById("bcr").display = "flex";
@@ -297,7 +298,7 @@ input::-webkit-inner-spin-button {
        }
        function bbtmul() {
         cheer.play()
-        ball_no += 1
+        ball_no2 += 1
         br = br + parseInt(bbt * bbt)
         document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br
         checkbl()
@@ -307,6 +308,7 @@ input::-webkit-inner-spin-button {
         }
        }
        function bbtout() {
+         ball_no2 += 1  
         cheer.play()
         alert("Bot got out at " + br)
         document.getElementById("pbalscreen").style.display = "none";
@@ -328,6 +330,9 @@ input::-webkit-inner-spin-button {
                     playerwon()
                 }
             }
+            else if(pr/100===1) {
+                cheer.play()
+            }
         }
        function checkbl() {
             if(crc === 1 ) {
@@ -335,6 +340,9 @@ input::-webkit-inner-spin-button {
                     botwon()
                 }
             }
+           else if(br/100===1) {
+                cheer.play()
+             }
         }
        function summary2() {
         if(crc === 1) {
@@ -348,8 +356,8 @@ input::-webkit-inner-spin-button {
        }
        function playerwon() {
            alert("Player won")
-           document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"+ "<br>" + "You made:" + pr + " runs"+"<br>" + "Bot made:" + br + " runs"
+           document.getElementById("who?").style.display = "block"
+           document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"+ "<br>" + "You made:" + pr + "(" +ball_no1+ ")"+" runs"+"<br>" + "Bot made:" + br + "(" +ball_no2+ ")"+" runs"
            cheer.play()
            cheer.play()
            stadium.pause()
@@ -358,8 +366,8 @@ input::-webkit-inner-spin-button {
        }
        function botwon() {
            alert("Bot won")
-                      document.getElementById("who?").style.display = "flex"
-           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." + "<br>" + "Bot made:" + br + " runs"+"<br>" + "You made:" + pr + " runs"
+                      document.getElementById("who?").style.display = "block"
+           document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." + "<br>" + "Bot made:" + br + "(" +ball_no2+ ")"+ " runs"+"<br>" + "You made:" + pr + "(" +ball_no1+ ")" + " runs"
            cheer.play()
             cheer.play()
            stadium.pause()
