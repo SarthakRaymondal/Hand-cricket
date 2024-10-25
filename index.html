@@ -1,1334 +1,2668 @@
 <!DOCTYPE html>
 
+
+
 <html lang="en">
+
+
 
 <head>
 
+
+
     <meta charset="UTF-8">
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
     <title>Hand cricket</title>
+
+
 
     <link rel="icon" type="image/jpg" href="bg.jpg">
 
+
+
     <style>
+
+
 
     body {
 
+
+
         font-family: "Poppins", sans-serif;
+
+
 
   font-weight: 400;
 
+
+
   font-style: normal;
+
+
 
   margin: 0;   
 
+
+
   color: white  
 
+
+
     }
+
+
 
     .ft1 {
 
+
+
   font-family: "Poppins", sans-serif;
+
+
 
   font-weight: 400;
 
+
+
   font-style: normal;
+
+
 
    }
 
+
+
    input::-webkit-outer-spin-button,
+
+
 
 input::-webkit-inner-spin-button {
 
+
+
   -webkit-appearance: none;
+
+
 
   margin: 0;
 
+
+
 }
+
+
 
 .bt1 {
 
+
+
     border: none;
+
+
 
     width: 120px;
 
+
+
     height: 40px;
+
+
 
     border-radius: 15px;
 
+
+
     font-weight: 900;
 
+
+
 }
+
+
 
 .bt1:hover {
 
+
+
     filter: brightness(80%);
 
+
+
 }
+
+
 
     </style>
 
+
+
 </head>
 
+
+
 <body>
+
     <audio id="stadium">
+
         <source src="stadium.mp3" type="audio/mpeg">
+
         <source src="stadium.ogg" type="audio/ogg">
+
       Your browser does not support the audio element.
+
       </audio>
+
       <audio id="cheer">
+
         <source src="cheer.mp3" type="audio/mpeg">
+
         <source src="cheer.ogg" type="audio/ogg">
+
       Your browser does not support the audio element.
+
       </audio>
+
 <!--Made by sarthak-->
+
+
 
     <img src="bg.jpg" style="position: fixed;top: 0;left: 0;z-index: -1;width: 100%;height: 100vh;filter: brightness(80%);">
 
+
+
     <!--xxxxxxxxxxxxxxxxxxxxxxx-->
+
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
+
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap" rel="stylesheet">
 
+
+
     <!--xxxxxxxxxxxxxxxxxxxxxxx-->
+
+
 
 <div style="display: flex;justify-content: center;align-items: center;width: 100%;" id="starts">
 
+
+
 <div style="display: block;width: 100%;">
+
+
 
     <p style="text-align: center;font-size: 40px;font-weight: 900;">HAND CRICKET</p>
 
+
+
     <div style="display: flex;width: 100%;justify-content: center;"><a>Type:</a>&nbsp;
+
+
 
     <form>
 
+
+
     <select name="gtype">
+
+
 
         <option value="crazy">Crazy</option>
 
+
+
         <option value="normal" disabled>Normal(coming soon)</option>
+
+
 
     </select>
 
+
+
     </form>
 
+
+
     </div>
+
+
 
     <br>
 
+
+
     <div style="width: 100%;display: flex;justify-content: center;">
+
+
 
     <button class="ft1 bt1" onclick="toss()">Start Match</button>
 
+
+
     </div>
+
     <br><div style="width: 100%;display: flex;justify-content: center;">
 
+
+
         <button class="ft1 bt1" onclick="htp()">How to play?</button>
+
     
+
         </div>
+
         <br><div style="width: 100%;display: flex;justify-content: center;">
 
+
+
             <input type="checkbox" checked onclick="ss()" id="ss1">Stadium sound&nbsp;<input type="checkbox" onclick="cs()" id="cs1" checked>Crowd Sound
+
         
+
             </div>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 <div style="display: none;justify-content: center;width: 100%;" id="tosss">
 
+
+
      <div style="width: 100%;display: block;">
+
+
 
           <p style="text-align: center;font-size: 40px;font-weight: 900;">Toss:</p>
 
+
+
           <div style="width: 100%;display: flex;justify-content: center;" id="tossbox">
+
+
 
               <input type="radio" name="toss" id="head"><a>Head</a>&nbsp;<input type="radio" name="toss" id="tails"><a>Tails</a>
 
+
+
           </div>
+
+
 
           <div style="width: 100%;display: none;justify-content: center;" id="tresult"><a style="font-size: 20px;font-weight: 900;" id="tresultt">Toss</a></div>
 
+
+
           <br><div style="display: flex;width: 100%;justify-content: center;" id="tossb"><button class="bt1 ft1" onclick="toss1()">Toss!!</button></div>
+
+
 
      </div>
 
+
+
 </div>
+
+
 
 <div style="display: none;justify-content: center;width: 100%;" id="pbatscreen">
 
+
+
     <div style="width: 100%;display: block;">
+
+
 
      <p style="text-align: center;font-size: 40px;font-weight: 900;">You are batting now</p>
 
+
+
      <div style="display: flex;width: 100%;justify-content: center;"><a id="pcr"></a></div><br>
+
+
 
      <div style="display: flex;width: 100%;justify-content: center;" id="pbscore">Your batting score:</div><br>
 
+
+
      <div style="width:100%;display: flex;justify-content: center;"><a>No:</a>&nbsp;<input type="number" placeholder="Any no(from 1 to 10)" id="batno" value="">&nbsp;<button onclick="bat()">Bat!!</button></div>
+
+
 
     </div>
 
+
+
 </div>
+
+
 
 <div style="display: none;justify-content: center;width: 100%;" id="pbalscreen">
 
+
+
     <div style="width: 100%;display: block;">
+
+
 
      <p style="text-align: center;font-size: 40px;font-weight: 900;">You are bowling now</p>
 
+
+
      <div style="display: flex;width: 100%;justify-content: center;"><a id="bcr"></a></div><br>
+
+
 
      <div style="display: flex;width: 100%;justify-content: center;" id="bbscore">Bot's batting score:</div><br>
 
+
+
      <div style="width:100%;display: flex;justify-content: center;"><a>No:</a>&nbsp;<input type="number" placeholder="Any no(from 1 to 10)" id="balno" value="">&nbsp;<button onclick="bowl()">Bowl!!</button></div>
 
+
+
+    </div>
+
+
+
+</div>
+
+<div style = "width: 100%;display: none;" id="statbox">
+
+<p style="text-align: center;font-size: 50px;font-weight: 900;display: none;" id="who?"></p>
+
+<div style="display: flex;justify-content: center;width: 100%;">
+
+    <div style="display: block;">
+
+        <a id="escore" style="font-size: 30px;font-weight: 900;">Bot</a>
+
     </div>
 
 </div>
-<div style = "width: 100%;display: none;" id="statbox">
-<p style="text-align: center;font-size: 50px;font-weight: 900;display: none;" id="who?"></p>
-<div style="display: flex;justify-content: center;width: 100%;">
-    <div style="display: block;">
-        <a id="escore" style="font-size: 30px;font-weight: 900;">Bot</a>
-    </div>
-</div>
+
 <br><div style="display: flex;width: 100%;justify-content: center;"><a style="font-size: 30px;font-weight: 900;">Your Batting stats:</a></div>
+
 <div style="display: flex;justify-content: center;width: 100%;">
+
     
+
         <a id="pshot" style="font-size: 20px;font-weight: 900;">
+
             0s-<span id="ps0"></span>,&nbsp;
+
             1s-<span id="ps1"></span>,&nbsp;
+
             2s-<span id="ps2"></span>,&nbsp;
+
             3s-<span id="ps3"></span>,&nbsp;
+
             4s-<span id="ps4"></span>,&nbsp;
+
             5s-<span id="ps5"></span>,&nbsp;
+
             6s-<span id="ps6"></span>,&nbsp;
+
             7s-<span id="ps7"></span>,&nbsp;
+
             8s-<span id="ps8"></span>,&nbsp;
+
             9s-<span id="ps9"></span>,&nbsp;
+
             10s-<span id="ps10"></span>
+
         </a>
+
     </div>
+
     <div style="display: flex;width: 100%;justify-content: center;"><a style="font-size: 30px;font-weight: 900;">Bot's Batting stats:</a></div>
+
 <div style="display: flex;justify-content: center;width: 100%;">
+
     
+
         <a id="pshot" style="font-size: 20px;font-weight: 900;">
+
             0s-<span id="bs0"></span>,&nbsp;
+
             1s-<span id="bs1"></span>,&nbsp;
+
             2s-<span id="bs2"></span>,&nbsp;
+
             3s-<span id="bs3"></span>,&nbsp;
+
             4s-<span id="bs4"></span>,&nbsp;
+
             5s-<span id="bs5"></span>,&nbsp;
+
             6s-<span id="bs6"></span>,&nbsp;
+
             7s-<span id="bs7"></span>,&nbsp;
+
             8s-<span id="bs8"></span>,&nbsp;
+
             9s-<span id="bs9"></span>,&nbsp;
+
             10s-<span id="bs10"></span>
+
         </a>
+
     </div>
+
     <br><div style="display: flex;width: 100%;justify-content: center;"><a style="font-size: 30px;font-weight: 900;">Your Batting stats(in pie chart):</a></div>
+
     <div style="width: 100%;display: flex;justify-content: center;"><div id="pbs2"></div></div>
+
     <br><div style="display: flex;width: 100%;justify-content: center;"><a style="font-size: 30px;font-weight: 900;">Bot's Batting stats(in pie chart):</a></div>
+
     <div style="width: 100%;display: flex;justify-content: center;"><div id="bbs2"></div></div>
+
     <br><div style="display: flex;justify-content: center;width: 100%;"><a style="font-weight: 900;font-weight: 900;font-size: 25px;">You econ(bowl):<span id="econ1"></span></a></div>
+
     <div style="display: flex;justify-content: center;width: 100%;"><a style="font-weight: 900;font-weight: 900;font-size: 25px;">Bot's econ:(bowl):<span id="econ2"></span></a></div>
+
     <br><div style="display: flex;justify-content: center;width: 100%;"><a style="font-weight: 900;font-weight: 900;font-size: 25px;">You SR(bat):<span id="sr1"></span></a></div>
+
     <div style="display: flex;justify-content: center;width: 100%;"><a style="font-weight: 900;font-weight: 900;font-size: 25px;">Bot's SR:(bat):<span id="sr2"></span></a></div>
+
 </div>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script>
+
+
 
         const cheer = document.getElementById("cheer")
 
+
+
         cheer.volume = 1
+
+
 
         const stadium = document.getElementById("stadium")
 
+
+
         stadium.volume = 1
+
         //Run counter
+
+
 
         var pr = 0;
 
+
+
         var br = 0;
+
+
 
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+
+
         //Toss variables(WARNING!=Don't touch this,this will mess up the toss)
+
+
 
         var tosse = 0;
 
+
+
         var tr = "";
+
+
 
         var tosse2 = 0;
 
+
+
         var bt = 0;
+
+
 
         var pbob1 = 0;
 
+
+
         var bbob1 = 0;
 
+
+
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
 
         //Bat1(player batting)
 
+
+
         var pbt = 0;
+
+
 
         var bbo = 0;
 
+
+
         var ball_no1 = 0;
+
+
 
         var pot = 0;
 
+
+
         var target1 = 50;
+
         var p0 = 0;
+
         var p1 = 0;
+
         var p2 = 0;
+
         var p3 = 0;
+
         var p4 = 0;
+
         var p5 = 0;
+
         var p6 = 0;
+
         var p7 = 0;
+
         var p8 = 0;
+
         var p9 = 0;
+
         var p10 = 0;
+
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
 
         //Chase run
 
+
+
         var crc = 0
+
+
 
         var cr = 0
 
+
+
         //
+
+
 
         //Bat2(bot batting)
 
+
+
         var pbl = 0;
+
+
 
         var bbt = 0;
 
+
+
         var ball_no2 = 0;
+
+
 
         var pot = 0;
 
+
+
         var target2 = 50;
+
         var b0 = 0;
+
         var b1 = 0;
+
         var b2 = 0;
+
         var b3 = 0;
+
         var b4 = 0;
+
         var b5 = 0;
+
         var b6 = 0;
+
         var b7 = 0;
+
         var b8 = 0;
+
         var b9 = 0;
+
         var b10 = 0;
+
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
 
        function toss() {
 
+
+
         document.getElementById("starts").style.display = "none";
+
+
 
         starttoss()
 
+
+
        }    
+
+
 
        function starttoss() {
 
+
+
         stadium.play()
+
+
 
         stadium.loop = true;
 
+
+
         document.getElementById("tosss").style.display = "flex";
 
+
+
        }
+
+
 
        function toss1() {
 
+
+
            if(document.getElementById("head").checked === true) {
+
+
 
             tosse = 1
 
+
+
             checktoss()
 
+
+
            }
+
+
 
            else if(document.getElementById("tails").checked === true) {
 
+
+
             tosse = 2
+
+
 
             checktoss()
 
+
+
            }
+
+
 
            else {
 
+
+
             tosse = 0
+
+
 
             alert("Choose your choice first")
 
+
+
            }
 
+
+
        }
+
+
 
        function checktoss() {
 
+
+
         tosse2 = Math.floor(Math.random() * 2) + 1;
+
+
 
         if(tosse2 === 1) {
 
+
+
           bt = "Heads"
+
+
 
         }
 
+
+
         else {
+
+
 
             bt = "Tails"
 
+
+
         }
+
+
 
          if(tosse === 1) {
 
+
+
             tr = "Heads"
+
+
 
          }
 
+
+
          else {
+
+
 
             tr = "Tails"
 
+
+
          }
+
+
 
         if(tr === bt) {
 
+
+
             playerwontoss();
+
+
 
         }
 
+
+
         else {
+
+
 
             botwontoss();
 
+
+
         }
 
+
+
        }
+
+
 
        function playerwontoss() {
 
+
+
         document.getElementById("tossb").style.display = "none";
+
+
 
         document.getElementById("tossbox").style.display = "none";
 
+
+
         document.getElementById("tresult").style.display = "flex";
+
         alert("You won the toss!")
+
         document.getElementById("tresultt").innerHTML = "Player won the toss!!"
+
+
 
         pbob()
 
+
+
        }
+
+
 
        function botwontoss() {
 
+
+
         document.getElementById("tossb").style.display = "none";
+
+
 
         document.getElementById("tossbox").style.display = "none";
 
+
+
         document.getElementById("tresult").style.display = "flex";
+
         alert("Bot won the toss!")
+
         document.getElementById("tresultt").innerHTML = "Bot won the toss!!"
+
+
 
         bbob()
 
+
+
        }
+
+
 
        function pbob() {
 
+
+
          pbob1 = prompt("Bat(1) or Ball(2) choose:")
+
+
 
          pbob1 = parseInt(pbob1)
 
+
+
          if(pbob1 === 1) {
+
+
 
             document.getElementById("tresultt").innerHTML = "Player will bat first";
 
+
+
             setTimeout(bat1 , 3000)
 
+
+
          }
+
+
 
          else if(pbob1 === 2) {
 
+
+
            document.getElementById("tresultt").innerHTML = "Player will bowl first";
+
+
 
            setTimeout(bat2, 3000)
 
+
+
          }
 
+
+
          else {
+
+
 
             alert("Wrong answer!!!")
 
+
+
             pbob()
+
+
 
          }
 
+
+
        }
+
+
 
        function bbob() {
 
+
+
         bbob1 = Math.floor(Math.random() * 2) + 1;
+
+
 
         if(bbob1 === 1) {
 
+
+
             document.getElementById("tresultt").innerHTML = "Bot will bat first";
+
+
 
             setTimeout(bat2, 3000)
 
+
+
          }
+
+
 
          else {
 
+
+
            document.getElementById("tresultt").innerHTML = "Bot will bowl first";
+
+
 
            setTimeout(bat1 , 3000)
 
+
+
          }
 
+
+
        }
+
+
 
        function bat1() {
 
+
+
         if(crc === 1) {
 
+
+
             document.getElementById("pcr").display = "flex";
+
+
 
             document.getElementById("pcr").innerHTML = "You need " + cr + " to win" + "<br>" + "Bot made:" + br + "(" +ball_no2+")"
 
+
+
         }
 
+
+
         document.getElementById("tosss").style.display = "none";
+
+
 
         document.getElementById("pbatscreen").style.display = "flex"
 
+
+
        }
+
+
 
        function bat2() {
 
+
+
         if(crc === 1) {
 
+
+
             document.getElementById("bcr").display = "flex";
+
+
 
             document.getElementById("bcr").innerHTML = "Bot need "+ cr + " to win" + "<br>" + "Player made:" + pr + "(" +ball_no1+")"
 
+
+
         }
+
+
 
         document.getElementById("tosss").style.display = "none";
 
+
+
                 document.getElementById("pbalscreen").style.display = "flex"
 
+
+
        }
+
+
 
        function bat() {
 
+
+
         pbt = document.getElementById("batno").value;
+
+
 
         pbt = parseInt(pbt)
 
+
+
         if(pbt > 10 || isNaN(pbt)) {
+
+
 
             alert("Wrong format")
 
+
+
         }
 
+
+
         else {
+
+
 
             checkbat()
 
+
+
         }
 
+
+
        }
+
+
 
        function checkbat() {
 
+
+
         bbo = Math.floor(Math.random() * 10) + 0;
+
+
 
         alert(bbo)
 
+
+
         if(pbt === 10 && bbo ===0 ) {pbtout()}
+
+
 
         else if(pbt === 0 && bbo === 10 ) {pbtout()}
 
+
+
         else if(pbt + 1 === bbo || pbt - 1 === bbo){pbtout()}
+
+
 
         else if(pbt === bbo) {pbtmul()}
 
+
+
         else{pbtnr()} 
 
+
+
        }
+
+
 
        function pbtnr() {
 
+
+
         ball_no1 += 1
+
+
 
         pr = pr + parseInt(pbt)
 
+
+
         document.getElementById("pbscore").innerHTML = "Your batting score: " + pr + "(" +ball_no1+ ")"
+
         if (pbt === 0) {
+
   p0 += 1;
+
 } else if (pbt === 1) {
+
   p1 += 1;
+
 } else if (pbt === 2) {
+
   p2 += 1;
+
 } else if (pbt === 3) {
+
   p3 += 1;
+
 } else if (pbt === 4) {
+
   p4 += 1;
+
 } else if (pbt === 5) {
+
   p5 += 1;
+
 } else if (pbt === 6) {
+
   p6 += 1;
+
 } else if (pbt === 7) {
+
   p7 += 1;
+
 } else if (pbt === 8) {
+
   p8 += 1;
+
 } else if (pbt === 9) {
+
   p9 += 1;
+
 } else {
+
   p10 += 1;
+
 }
+
         checkbt()
+
+
 
         if(crc === 1) {
 
+
+
             document.getElementById("pcr").display = "flex";
+
+
 
             document.getElementById("pcr").innerHTML = "You need " + (cr-pr) + " to win" + "<br>" + "Bot made:" + br + "(" +ball_no2+")"
 
+
+
         }
 
+
+
        }
+
+
 
        function pbtmul() {
 
+
+
         cheer.play()
 
+
+
         ball_no1 += 1
+
+
 
         pr = pr + parseInt(pbt * pbt)
 
+
+
         document.getElementById("pbscore").innerHTML = "Your batting score: " + pr+ "(" +ball_no1+ ")"
+
         if (pbt === 0) {
+
   p0 += pbt;
+
 } else if (pbt === 1) {
+
   p1 += pbt;
+
 } else if (pbt === 2) {
+
   p2 += pbt;
+
 } else if (pbt === 3) {
+
   p3 += pbt;
+
 } else if (pbt === 4) {
+
   p4 += pbt;
+
 } else if (pbt === 5) {
+
   p5 += pbt;
+
 } else if (pbt === 6) {
+
   p6 += pbt;
+
 } else if (pbt === 7) {
+
   p7 += pbt;
+
 } else if (pbt === 8) {
+
   p8 += pbt;
+
 } else if (pbt === 9) {
+
   p9 += pbt;
+
 } else {
+
   p10 += pbt;
+
 }
+
         checkbt()
 
+
+
         if(crc === 1) {
+
+
 
             document.getElementById("pcr").display = "flex";
 
+
+
             document.getElementById("pcr").innerHTML = "You need " + (cr-pr) + " to win" + "<br>" + "Bot made:" + br + "(" +ball_no2+")"
+
+
 
         }
 
+
+
        }
+
+
 
        function pbtout() {
 
+
+
         ball_no1 += 1
 
+
+
         cheer.play()
+
+
 
         alert("You got out at " + pr)
 
+
+
         document.getElementById("pbatscreen").style.display = "none";
+
+
 
         summary1();
 
+
+
        }
+
+
 
        function bowl() {
 
+
+
         pbl = document.getElementById("balno").value;
+
+
 
         pbl = parseInt(pbl)
 
+
+
         if(pbl > 10 || isNaN(pbl)) {
+
+
 
             alert("Wrong format")
 
+
+
         }
+
+
 
         else {
 
+
+
             checkbowl()
+
+
 
         }
 
+
+
        }
+
+
 
        function checkbowl() {
 
+
+
         bbt = Math.floor(Math.random() * 10) + 1;
+
+
 
         alert(bbt)
 
+
+
         if(pbl === 10 && bbt ===0 ) {bbtout()}
+
+
 
         else if(pbl === 0 && bbt === 10 ) {bbtout()}
 
+
+
         else if(bbt + 1 === pbl || bbt - 1 === pbl){bbtout()}
+
+
 
         else if(pbl === bbt) {bbtmul()}
 
+
+
         else{bbtnr()} 
 
+
+
        }
+
+
 
        function bbtnr() {
 
+
+
         ball_no2 += 1
+
+
 
         br = br + parseInt(bbt)
 
+
+
         document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br+ "(" +ball_no2+ ")"
+
         if (bbt === 0) {
+
   b0 += 1;
+
 } else if (bbt === 1) {
+
   b1 += 1;
+
 } else if (bbt === 2) {
+
   b2 += 1;
+
 } else if (bbt === 3) {
+
   b3 += 1;
+
 } else if (bbt === 4) {
+
   b4 += 1;
+
 } else if (bbt === 5) {
+
   b5 += 1;
+
 } else if (bbt === 6) {
+
   b6 += 1;
+
 } else if (bbt === 7) {
+
   b7 += 1;
+
 } else if (bbt === 8) {
+
   b8 += 1;
+
 } else if (bbt === 9) {
+
   b9 += 1;
+
 } else {
+
   b10 += 1;
+
 }
+
         checkbl()
+
+
 
         if(crc === 1) {
 
+
+
             document.getElementById("bcr").display = "flex";
+
+
 
             document.getElementById("bcr").innerHTML = "Bot need " + (cr-br) + " to win" + "<br>" + "Player made:" + pr + "(" +ball_no1+")"
 
+
+
         }
 
+
+
        }
+
+
 
        function bbtmul() {
 
+
+
         cheer.play()
+
+
 
         ball_no2 += 1
 
+
+
         br = br + parseInt(bbt * bbt)
 
+
+
         document.getElementById("bbscore").innerHTML = "Bot's batting score: " + br+ "(" +ball_no2+ ")"
+
         if (bbt === 0) {
+
   b0 += bbt;
+
 } else if (bbt === 1) {
+
   b1 += bbt;
+
 } else if (bbt === 2) {
+
   b2 += bbt;
+
 } else if (bbt === 3) {
+
   b3 += bbt;
+
 } else if (bbt === 4) {
+
   b4 += bbt;
+
 } else if (bbt === 5) {
+
   b5 += bbt;
+
 } else if (bbt === 6) {
+
   b6 += bbt;
+
 } else if (bbt === 7) {
+
   b7 += bbt;
+
 } else if (bbt === 8) {
+
   b8 += bbt;
+
 } else if (bbt === 9) {
+
   b9 += bbt;
+
 } else {
+
   b10 += bbt;
+
 }
+
         checkbl()
 
+
+
         if(crc === 1) {
+
+
 
             document.getElementById("bcr").display = "flex";
 
+
+
             document.getElementById("bcr").innerHTML = "Bot need " + (cr-br) + " to win" + "<br>" + "Player made:" + pr + "(" +ball_no1+")"
+
+
 
         }
 
+
+
        }
+
+
 
        function bbtout() {
 
+
+
          ball_no2 += 1  
 
+
+
         cheer.play()
+
+
 
         alert("Bot got out at " + br)
 
+
+
         document.getElementById("pbalscreen").style.display = "none";
+
+
 
         summary2();
 
+
+
        }
+
+
 
        function summary1() {
 
+
+
         if(crc === 1) {
+
                 if(pr === br) {
+
                     tie()
+
                 }
+
                 else {
+
                     botwon()
+
                 }
+
+
 
         }
 
+
+
         if(crc === 0) {
+
+
 
            cr = pr + 1
 
+
+
            crc = 1
+
+
 
            bat2()
 
+
+
         }
 
+
+
     }
+
+
 
         function checkbt() {
 
+
+
             if(crc === 1 ) {
+
+
 
                 if(cr === pr || cr < pr) {
 
+
+
                     playerwon()
 
+
+
                 }
+
                 else {checktarget1()}
+
             }
+
+
 
             else {checktarget1()}
 
+
+
         }
+
         function checktarget1() {
+
             if(pr > (target1-1)) {
+
         document.getElementById("pbscore").style.color = "Yellow"
+
            cheer.play()
 
+
+
            target1 = target1 + 50
+
            checktarget1()
+
 }
+
         }
+
+
 
        function checkbl() {
 
+
+
             if(crc === 1 ) {
+
+
 
                 if(cr === br || cr < br) {
 
+
+
                     botwon()
 
+
+
                 }
+
                 else {checktarget2()}
+
             }
+
+
 
             else {
+
                 checktarget2()
+
             }
 
+
+
         }
+
         function checktarget2() {
+
             if(br > (target2-1)) {
+
         document.getElementById("bbscore").style.color = "Yellow"
+
         cheer.play()
 
+
+
         target2 = target2 + 50
+
         checktarget2()
+
 }
+
         }
+
+
 
        function summary2() {
 
+
+
         if(crc === 1) {
+
             if(pr === br) {
+
                     tie()
+
                 }
+
             else {
+
             playerwon()
+
            }
+
         }
+
         if(crc === 0) {
+
+
 
            cr = br + 1
 
+
+
            crc = 1
+
+
 
            bat1()
 
+
+
         }
+
+
 
        }
 
+
+
        function playerwon() {
+
            document.getElementById("statbox").style.display = "block";
+
            alert("Player won")
-           document.getElementById("econ1").innerHTML = br / (ball_no2/6);
-           document.getElementById("econ2").innerHTML = pr / (ball_no1/6);
-           document.getElementById("sr1").innerHTML = pr / ball_no1 * 100;
-           document.getElementById("sr2").innerHTML = br / ball_no2 * 100;
+
+           document.getElementById("econ1").innerHTML = (br / (ball_no2/6)).toFixed(2);
+
+           document.getElementById("econ2").innerHTML = (pr / (ball_no1/6)).toFixed(2);
+
+           document.getElementById("sr1").innerHTML = (pr / ball_no1 * 100).toFixed(3);
+
+           document.getElementById("sr2").innerHTML = (br / ball_no2 * 100).toFixed(3);
+
            document.getElementById("who?").style.display = "block"
 
+
+
            document.getElementById("who?").innerHTML = "Congrats!!You won😛🗿"
+
             document.getElementById("escore").innerHTML = "<br>" + "Bot made:" + br + "(" +ball_no2+ ")"+ " runs"+"<br>" + "You made:" + pr + "(" +ball_no1+ ")" + " runs"
+
            //Your batting stats
+
            document.getElementById("ps0").innerHTML = p0
+
            document.getElementById("ps1").innerHTML = p1
+
            document.getElementById("ps2").innerHTML = p2
+
            document.getElementById("ps3").innerHTML = p3
+
            document.getElementById("ps4").innerHTML = p4
+
            document.getElementById("ps5").innerHTML = p5
+
            document.getElementById("ps6").innerHTML = p6
+
            document.getElementById("ps7").innerHTML = p7
+
            document.getElementById("ps8").innerHTML = p8
+
            document.getElementById("ps9").innerHTML = p9
+
            document.getElementById("ps10").innerHTML = p10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
     //Bot's batting stats
+
            document.getElementById("bs0").innerHTML = b0
+
            document.getElementById("bs1").innerHTML = b1
+
            document.getElementById("bs2").innerHTML = b2
+
            document.getElementById("bs3").innerHTML = b3
+
            document.getElementById("bs4").innerHTML = b4
+
            document.getElementById("bs5").innerHTML = b5
+
            document.getElementById("bs6").innerHTML = b6
+
            document.getElementById("bs7").innerHTML = b7
+
            document.getElementById("bs8").innerHTML = b8
+
            document.getElementById("bs9").innerHTML = b9
+
            document.getElementById("bs10").innerHTML = b10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-           cheer.play()
 
            cheer.play()
+
+
+
+           cheer.play()
+
+
 
            stadium.pause()
 
+
+
            document.getElementById("pbalscreen").style.display = "none";
 
+
+
            document.getElementById("pbatscreen").style.display = "none";
+
            endr();
+
            //Pie chart :)
+
            google.charts.load('current', { 'packages': ['corechart'] });
+
 google.charts.setOnLoadCallback(drawCharts);
 
+
+
 function drawCharts()   
+
  {
+
   // Player batting chart data
+
   var playerData = google.visualization.arrayToDataTable([
+
     ['Players', 'Runs'],
+
     ['0s', p0],
+
     ['1s', p1],
+
     ['2s', p2],
+
     ['3s', p3],
+
     ['4s', p4],
+
     ['5s', p5],
+
     ['6s', p6],
+
     ['7s', p7],
+
     ['8s', p8],
+
     ['9s', p9],
+
     ['10s', p10],
+
   ]);
+
+
 
   // Bot batting chart data
+
   var botData = google.visualization.arrayToDataTable([
+
     ['Bot', 'Runs'],
+
     ['0s', b0],
+
     ['1s', b1],
+
     ['2s', b2],
+
     ['3s', b3],
+
     ['4s', b4],
+
     ['5s', b5],
+
     ['6s', b6],
+
     ['7s', b7],
+
     ['8s', b8],
+
     ['9s', b9],
+
     ['10s', b10],
+
   ]);
 
+
+
   // Player batting chart options
+
   var playerOptions = {
+
     'title': 'Player batting stats'
+
   };
+
+
 
   // Bot batting chart options
+
   var botOptions = {
+
     'title': 'Bot batting stats'
+
+
 
   };
 
+
+
   // Create and draw the player batting chart
+
   var playerChart = new google.visualization.PieChart(document.getElementById('pbs2'));
+
   playerChart.draw(playerData, playerOptions);
 
+
+
   // Create and draw the bot batting chart
+
   var botChart = new google.visualization.PieChart(document.getElementById('bbs2'));
+
   botChart.draw(botData, botOptions);
+
 }
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
        }
 
+
+
        function botwon() {
+
         document.getElementById("statbox").style.display = "block";
+
            alert("Bot won")
-           document.getElementById("econ1").innerHTML = br / (ball_no2/6);
-           document.getElementById("econ2").innerHTML = pr / (ball_no1/6);
-           document.getElementById("sr1").innerHTML = pr / ball_no1 * 100;
-           document.getElementById("sr2").innerHTML = br / ball_no2 * 100;
+
+           document.getElementById("econ1").innerHTML = (br / (ball_no2/6)).toFixed(2);
+
+           document.getElementById("econ2").innerHTML = (pr / (ball_no1/6)).toFixed(2);
+
+           document.getElementById("sr1").innerHTML = (pr / ball_no1 * 100).toFixed(3);
+
+           document.getElementById("sr2").innerHTML = (br / ball_no2 * 100).toFixed(3);
+
             document.getElementById("who?").style.display = "block"
 
+
+
            document.getElementById("who?").innerHTML = "Bot won!!Better luck next time😭." 
+
            document.getElementById("escore").innerHTML = "<br>" + "Bot made:" + br + "(" +ball_no2+ ")"+ " runs"+"<br>" + "You made:" + pr + "(" +ball_no1+ ")" + " runs"
+
            //Your batting stats
+
            document.getElementById("ps0").innerHTML = p0
+
            document.getElementById("ps1").innerHTML = p1
+
            document.getElementById("ps2").innerHTML = p2
+
            document.getElementById("ps3").innerHTML = p3
+
            document.getElementById("ps4").innerHTML = p4
+
            document.getElementById("ps5").innerHTML = p5
+
            document.getElementById("ps6").innerHTML = p6
+
            document.getElementById("ps7").innerHTML = p7
+
            document.getElementById("ps8").innerHTML = p8
+
            document.getElementById("ps9").innerHTML = p9
+
            document.getElementById("ps10").innerHTML = p10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
     //Bot's batting stats
+
     document.getElementById("bs0").innerHTML = b0
+
            document.getElementById("bs1").innerHTML = b1
+
            document.getElementById("bs2").innerHTML = b2
+
            document.getElementById("bs3").innerHTML = b3
+
            document.getElementById("bs4").innerHTML = b4
+
            document.getElementById("bs5").innerHTML = b5
+
            document.getElementById("bs6").innerHTML = b6
+
            document.getElementById("bs7").innerHTML = b7
+
            document.getElementById("bs8").innerHTML = b8
+
            document.getElementById("bs9").innerHTML = b9
+
            document.getElementById("bs10").innerHTML = b10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
            cheer.play()
+
+
 
             cheer.play()
 
+
+
            stadium.pause()
+
+
 
            document.getElementById("pbalscreen").style.display = "none";
 
+
+
            document.getElementById("pbatscreen").style.display = "none";
+
            endr();
+
 //Pie chart :)
+
 google.charts.load('current', { 'packages': ['corechart'] });
+
 google.charts.setOnLoadCallback(drawCharts);
 
+
+
 function drawCharts()   
+
  {
+
   // Player batting chart data
+
   var playerData = google.visualization.arrayToDataTable([
+
     ['Players', 'Runs'],
+
     ['0s', p0],
+
     ['1s', p1],
+
     ['2s', p2],
+
     ['3s', p3],
+
     ['4s', p4],
+
     ['5s', p5],
+
     ['6s', p6],
+
     ['7s', p7],
+
     ['8s', p8],
+
     ['9s', p9],
+
     ['10s', p10],
+
   ]);
+
+
 
   // Bot batting chart data
+
   var botData = google.visualization.arrayToDataTable([
+
     ['Bot', 'Runs'],
+
     ['0s', b0],
+
     ['1s', b1],
+
     ['2s', b2],
+
     ['3s', b3],
+
     ['4s', b4],
+
     ['5s', b5],
+
     ['6s', b6],
+
     ['7s', b7],
+
     ['8s', b8],
+
     ['9s', b9],
+
     ['10s', b10],
+
   ]);
 
+
+
   // Player batting chart options
+
   var playerOptions = {
+
     'title': 'Player batting stats',
 
+
+
   };
+
+
 
   // Bot batting chart options
+
   var botOptions = {
+
     'title': 'Bot batting stats',
+
   };
 
+
+
   // Create and draw the player batting chart
+
   var playerChart = new google.visualization.PieChart(document.getElementById('pbs2'));
+
   playerChart.draw(playerData, playerOptions);
 
+
+
   // Create and draw the bot batting chart
+
   var botChart = new google.visualization.PieChart(document.getElementById('bbs2'));
+
   botChart.draw(botData, botOptions);
+
 }
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
        }
+
        function tie() {
+
         document.getElementById("statbox").style.display = "block";
+
         alert("It's a tie")
-        document.getElementById("econ1").innerHTML = br / (ball_no2/6);
-        document.getElementById("econ2").innerHTML = pr / (ball_no1/6);
-        document.getElementById("sr1").innerHTML = pr / ball_no1 * 100;
-        document.getElementById("sr2").innerHTML = br / ball_no2 * 100;
+
+        document.getElementById("econ1").innerHTML = (br / (ball_no2/6)).toFixed(2);
+
+        document.getElementById("econ2").innerHTML = (pr / (ball_no1/6)).toFixed(2);
+
+        document.getElementById("sr1").innerHTML = (pr / ball_no1 * 100).toFixed(3);
+
+        document.getElementById("sr2").innerHTML = (br / ball_no2 * 100).toFixed(3);
+
 document.getElementById("who?").style.display = "block"
 
+
+
 document.getElementById("who?").innerHTML = "It's a tie!!😫"
+
 document.getElementById("escore").innerHTML = "<br>" + "Bot made:" + br + "(" +ball_no2+ ")"+ " runs"+"<br>" + "You made:" + pr + "(" +ball_no1+ ")" + " runs"
+
            //Your batting stats
+
            document.getElementById("ps0").innerHTML = p0
+
            document.getElementById("ps1").innerHTML = p1
+
            document.getElementById("ps2").innerHTML = p2
+
            document.getElementById("ps3").innerHTML = p3
+
            document.getElementById("ps4").innerHTML = p4
+
            document.getElementById("ps5").innerHTML = p5
+
            document.getElementById("ps6").innerHTML = p6
+
            document.getElementById("ps7").innerHTML = p7
+
            document.getElementById("ps8").innerHTML = p8
+
            document.getElementById("ps9").innerHTML = p9
+
            document.getElementById("ps10").innerHTML = p10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
     //Bot's batting stats
+
     document.getElementById("bs0").innerHTML = b0
+
            document.getElementById("bs1").innerHTML = b1
+
            document.getElementById("bs2").innerHTML = b2
+
            document.getElementById("bs3").innerHTML = b3
+
            document.getElementById("bs4").innerHTML = b4
+
            document.getElementById("bs5").innerHTML = b5
+
            document.getElementById("bs6").innerHTML = b6
+
            document.getElementById("bs7").innerHTML = b7
+
            document.getElementById("bs8").innerHTML = b8
+
            document.getElementById("bs9").innerHTML = b9
+
            document.getElementById("bs10").innerHTML = b10
+
            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-cheer.play()
 
 cheer.play()
+
+
+
+cheer.play()
+
+
 
 stadium.pause()
 
+
+
 document.getElementById("pbalscreen").style.display = "none";
 
+
+
 document.getElementById("pbatscreen").style.display = "none"; 
+
 endr();
+
 //Pie chart :)
+
 google.charts.load('current', { 'packages': ['corechart'] });
+
 google.charts.setOnLoadCallback(drawCharts);
 
+
+
 function drawCharts()   
+
  {
+
   // Player batting chart data
+
   var playerData = google.visualization.arrayToDataTable([
+
     ['Players', 'Runs'],
+
     ['0s', p0],
+
     ['1s', p1],
+
     ['2s', p2],
+
     ['3s', p3],
+
     ['4s', p4],
+
     ['5s', p5],
+
     ['6s', p6],
+
     ['7s', p7],
+
     ['8s', p8],
+
     ['9s', p9],
+
     ['10s', p10],
+
   ]);
+
+
 
   // Bot batting chart data
+
   var botData = google.visualization.arrayToDataTable([
+
     ['Bot', 'Runs'],
+
     ['0s', b0],
+
     ['1s', b1],
+
     ['2s', b2],
+
     ['3s', b3],
+
     ['4s', b4],
+
     ['5s', b5],
+
     ['6s', b6],
+
     ['7s', b7],
+
     ['8s', b8],
+
     ['9s', b9],
+
     ['10s', b10],
+
   ]);
 
+
+
   // Player batting chart options
+
   var playerOptions = {
+
     'title': 'Player batting stats',
+
   };
+
+
 
   // Bot batting chart options
+
   var botOptions = {
+
     'title': 'Bot batting stats',
+
   };
 
+
+
   // Create and draw the player batting chart
+
   var playerChart = new google.visualization.PieChart(document.getElementById('pbs2'));
+
   playerChart.draw(playerData, playerOptions);
 
+
+
   // Create and draw the bot batting chart
+
   var botChart = new google.visualization.PieChart(document.getElementById('bbs2'));
+
   botChart.draw(botData, botOptions);
+
 }
+
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
        }
+
 function endr() {
+
     if(30 > pr / (ball_no1/6)) {
+
         document.getElementById("econ2").style.color = "Yellow"  
+
     }
+
     if(30 > br / (ball_no2/6)) {
+
         document.getElementById("econ1").style.color = "Yellow"  
+
     }
+
     if(400 < pr / ball_no1 * 100) {
+
         document.getElementById("sr1").style.color = "Yellow"         
+
     }
+
     if(400 < br / ball_no2 * 100) {
+
         document.getElementById("sr2").style.color = "Yellow"         
+
     }
+
     if(p0 > 5) {
+
         document.getElementById("ps0").style.color = "Yellow"              
+
     }
+
     if(p1 > 5) {
+
         document.getElementById("ps1").style.color = "Yellow"              
+
     }
+
     if(p2 > 5) {
+
         document.getElementById("ps2").style.color = "Yellow"              
+
     }
+
     if(p3 > 5) {
+
         document.getElementById("ps3").style.color = "Yellow"              
+
     }
+
     if(p4 > 5) {
+
         document.getElementById("ps4").style.color = "Yellow"              
+
     }
+
     if(p5 > 5) {
+
         document.getElementById("ps5").style.color = "Yellow"              
+
     }
+
     if(p6 > 5) {
+
         document.getElementById("ps6").style.color = "Yellow"              
+
     }
+
     if(p7 > 5) {
+
         document.getElementById("ps7").style.color = "Yellow"              
+
     }
+
     if(p8 > 5) {
+
         document.getElementById("ps8").style.color = "Yellow"              
+
     }
+
     if(p9 > 5) {
+
         document.getElementById("ps9").style.color = "Yellow"              
+
     }
+
     if(p10 > 10) {
+
         document.getElementById("ps10").style.color = "Yellow"              
+
     }
+
     if(b0 > 5) {
+
         document.getElementById("bs0").style.color = "Yellow"              
+
     }
+
     if(b1 > 5) {
+
         document.getElementById("bs1").style.color = "Yellow"              
+
     }
+
     if(b2 > 5) {
+
         document.getElementById("bs2").style.color = "Yellow"              
+
     }
+
     if(b3 > 5) {
+
         document.getElementById("bs3").style.color = "Yellow"              
+
     }
+
     if(b4 > 5) {
+
         document.getElementById("bs4").style.color = "Yellow"              
+
     }
+
     if(b5 > 5) {
+
         document.getElementById("bs5").style.color = "Yellow"              
+
     }
+
     if(b6 > 5) {
+
         document.getElementById("bs6").style.color = "Yellow"              
+
     }
+
     if(b7 > 5) {
+
         document.getElementById("bs7").style.color = "Yellow"              
+
     }
+
     if(b8 > 5) {
+
         document.getElementById("bs8").style.color = "Yellow"              
+
     }
+
     if(b9 > 5) {
+
         document.getElementById("bs9").style.color = "Yellow"              
+
     }
+
     if(b10 > 10) {
+
         document.getElementById("bs10").style.color = "Yellow"              
+
     }
+
 }
+
 function htp() {
+
     window.open("https://www.instructables.com/How-to-play-crazy-cricket/")
+
 }
+
 function ss() {
+
     if(document.getElementById("ss1").checked) {
+
         stadium.volume = 1
+
     }
+
     else {
+
         stadium.volume = 0
+
     }
+
 }
+
 function cs() {
+
     if(document.getElementById("cs1").checked) {
+
         cheer.volume = 1
+
     }
+
     else {
+
         cheer.volume = 0
+
     }
+
 }
+
     </script>
+
+
 
 </body>
 
+
+
 </html>
+
+
+
 
 
