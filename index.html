@@ -195,6 +195,8 @@ input::-webkit-inner-spin-button {
 <div style = "width: 100%;display: none;" id="statbox">
 <p style="text-align: center;font-size: 50px;font-weight: 900;display: none;" id="who?"></p>
 <div style="display: flex;justify-content: center;width: 100%;">
+        <a id="tscore1" style="font-size: 30px;font-weight: 900;">It's a tie :/</a></div>
+<div style="display: flex;justify-content: center;width: 100%;">
     <div style="display: block;">
         <a id="escore" style="font-size: 30px;font-weight: 900;">Bot</a>
     </div>
@@ -301,6 +303,7 @@ input::-webkit-inner-spin-button {
         var p8 = 0;
         var p9 = 0;
         var p10 = 0;
+        var pbd1 = 0;
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
         //Chase run
@@ -333,6 +336,7 @@ input::-webkit-inner-spin-button {
         var b8 = 0;
         var b9 = 0;
         var b10 = 0;
+        var bbd1 = 0;
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
        function toss() {
@@ -663,7 +667,7 @@ input::-webkit-inner-spin-button {
        }
 
        function pbtout() {
-
+        pbd1 = 1
         ball_no1 += 1
         pinfo1 = pinfo1 + "\n" +"Ball no. "+ ball_no1+", You got out at :" + pr + " runs"
         cheer.play()
@@ -801,7 +805,7 @@ input::-webkit-inner-spin-button {
        }
 
        function bbtout() {
-
+         bbd1 = 1
          ball_no2 += 1  
 
         cheer.play()
@@ -915,6 +919,12 @@ target2 = target2 + 50
        function playerwon() {
            document.getElementById("statbox").style.display = "block";
            alert("Player won")
+if(crc === 1 && pbd1 === 1) {
+document.getElementById("tscore1").innerHTML = "Bot lost by " + (cr-br) + " runs"
+}
+else {
+document.getElementById("tscore1").innerHTML = "Player completed the target"
+}
            document.getElementById("econ1").innerHTML = (br / (ball_no2/6)).toFixed(2);
            document.getElementById("econ2").innerHTML = (pr / (ball_no1/6)).toFixed(2);
            document.getElementById("sr1").innerHTML = (pr / ball_no1 * 100).toFixed(3);
@@ -1022,6 +1032,12 @@ function drawCharts()  
 
        function botwon() {
         document.getElementById("statbox").style.display = "block";
+if(crc === 1 && bbd1 === 1) {
+document.getElementById("tscore1").innerHTML = "Player lost by " + (cr-pr) + " runs"
+}
+else {
+document.getElementById("tscore1").innerHTML = "Bot completed the target"
+}
            alert("Bot won")
            document.getElementById("econ1").innerHTML = (br / (ball_no2/6)).toFixed(2);
            document.getElementById("econ2").innerHTML = (pr / (ball_no1/6)).toFixed(2);
@@ -1319,7 +1335,6 @@ function htp() {
 function ss() {
     if(document.getElementById("ss1").checked) {
         stadium.volume = 1
- 
     }
     else {
         stadium.volume = 0
